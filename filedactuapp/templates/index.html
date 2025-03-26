@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+{% include 'form.html' with action='/' %}
+{% for mssg in messages %}
+<div>
+    {% include 'message.html' with message=message_user %}
+</div>
+{% endfor %}
+{% endblock %}

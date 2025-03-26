@@ -1,0 +1,21 @@
+{% load static %}
+{% block content %}
+<a href="/details/{{mssg.id}}/">
+    <img src="{% static 'avatars/avatar.png' %}" class="user_avatar" alt="avatar">
+    <header>
+        <p class="author">{{ mssg.users.username}}</p>
+        <div>
+            <span>Date de création : </span>
+            <p>📅 {{mssg.created_at}}</p>
+        </div>
+    </header>
+    <span>Message : </span>
+    <div class="message">
+        <blockquote cite="https://www.huxley.net/bnw/four.html">
+            <p class="message_text">{{mssg.contents}}</p>
+        </blockquote>
+        <p class="cite">— {{ mssg.users.username }}, <cite>{{mssg.users.username|slice:"::2"}}{{mssg.created_at|date:'dmhis'}} </cite>
+        </p>
+    </div>
+</a>
+{% endblock %}

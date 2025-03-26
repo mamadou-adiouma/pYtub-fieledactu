@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+{% include 'form.html' with action=request.path %}
+<div>
+    {% include 'message.html' with mssg=message_user %}
+</div>
+
+{% for comment in responses_comments %}
+<header>
+    <p class="author">{{ comment.users.username}}</p>
+    <div>
+        <span>Date de création : </span>
+        <p>📅 {{ comment.created_at }}</p>
+    </div>
+</header>
+<span>Message : </span>
+<div class="message">
+    <blockquote cite="https://www.huxley.net/bnw/four.html">
+        <p class="message_text">{{comment.contents}}</p>
+    </blockquote>
+    <p class="cite">— {{ comment.users.username}}, <cite>{{comment.users.username|slice:"::2"}}{{comment.created_at|date:'dmhis'}} </cite>
+    </p>
+</div>
+{% endfor %}
+
+{% endblock %}

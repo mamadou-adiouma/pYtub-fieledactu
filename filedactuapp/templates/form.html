@@ -1,0 +1,11 @@
+{% if request.user.is_authentificated %}
+<form action="{{ action }}" method="POST">
+    {% csrf_token %}
+    <input type="text" name="users" placeholder="Utilisateur" minlength="5" maxlength="50" required>
+    <textarea name="contents" cols="50" rows="5" placeholder="message" minlength="5" maxlength="1000"
+              required></textarea>
+    <input type="submit" value="Soumettre">
+</form>
+{% else %}
+<h3>Vous devez-vous <a href="/admin/login/?next=/">connectez</a> en tant admin</h3>
+{% endif %}
